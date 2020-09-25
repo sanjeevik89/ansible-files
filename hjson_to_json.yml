@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+  - name: Convert HJSON to JSON
+    connection: local
+    hjson_to_json:
+      input: "{{ input_file }}"
+      output: "{{ output_file }}"
+    register: res_json
+
+  - debug: var=res_json
